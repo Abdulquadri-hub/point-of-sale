@@ -151,12 +151,15 @@ class sale
 			if(!isset($arr[$i]))
 				$arr[$i] = 0;  
 
-			foreach($dailyData as $row)
+			if(isset($dailyData)) 
 			{
-				$hour = date('H', strtotime($row->sales_date_created));
-				if($hour == $i)
+				foreach($dailyData as $row)
 				{
-					$arr[$i] = $row->total;
+					$hour = date('H', strtotime($row->sales_date_created));
+					if($hour == $i)
+					{
+						$arr[$i] = $row->total;
+					}
 				}
 			}
 		}
